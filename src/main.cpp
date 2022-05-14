@@ -1,5 +1,9 @@
 #include <iostream>
+#include <PlayerJumpScript.h>
+
 
 int main () {
-    std::cout << "BEEP BOOP" << std::endl;
+    std::cout << "BOP BOP BOP" << std::endl;
+
+    pjump::handleStartJumpRecord();
 }
