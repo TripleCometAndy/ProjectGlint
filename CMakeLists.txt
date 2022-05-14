@@ -10,8 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(PlayerJumpLogic)
 
 target_include_directories(PlayerJumpLogic PRIVATE
-	include
-	src
+    include
+    src
 )
 
 add_subdirectory(src)
