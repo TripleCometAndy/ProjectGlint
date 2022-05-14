@@ -52,9 +52,3 @@ void updateJumpRecordFrame() {
     // TODO
 }    
 }
-
-
-
-    
-
-
