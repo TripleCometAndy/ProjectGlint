@@ -11,15 +11,14 @@ class JumpState {
 
     void setState(State state);
     void resetFrameCount();
-
   public:
     JumpState();
 
     void startJumpRecord();
-    int getNumberOfJumpRecordFrames();
-    void iterateNumberOfFrames();
     void startJumping();
-    bool canRecordJump();
-    bool isRecordingJump();
+    void iterateNumberOfFrames();
+    bool isRecordingJump() const;
+    int getNumberOfJumpRecordFrames() const;
+    bool canRecordJump() const;
 };
 }

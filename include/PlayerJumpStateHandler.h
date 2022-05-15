@@ -13,15 +13,15 @@ class PlayerJumpStateHandler {
     void handleStartJumpRecord();
     void enterJumpRecordState();
     void handleContinuingJumpRecord();
-    bool shouldExitJumpRecord();
+    bool shouldExitJumpRecord() const;
     void startJump();
     void iterateJumpRecordFrame();
     void enterJumpingState();
     void iterateJumpingFrame();
     void recordThatJumpBegan();
     void jumpButtonReleasedDuringRecord();
-    bool canRecordJump();
-    bool isRecordingJump();
+    bool canRecordJump() const;
+    bool isRecordingJump() const;
 
   public:
     PlayerJumpStateHandler(std::function<void(int)> notifyJumpBegin);

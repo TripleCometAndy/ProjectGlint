@@ -15,5 +15,6 @@ int main() {
     pjump::PlayerJumpStateHandler jumpStateHandler(func);
     jumpStateHandler.jumpButtonPressed();
     jumpStateHandler.jumpButtonPressed();
+    jumpStateHandler.jumpButtonPressed();
     jumpStateHandler.jumpButtonReleased();
 }

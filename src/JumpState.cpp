@@ -12,7 +12,7 @@ void JumpState::startJumpRecord() {
     resetFrameCount();
 }
 
-int JumpState::getNumberOfJumpRecordFrames() {
+int JumpState::getNumberOfJumpRecordFrames() const {
     int numberOfJumpRecordFrames = 0;
 
     if (currentState == State::JUMP_RECORD) {
@@ -31,11 +31,11 @@ void JumpState::startJumping() {
     resetFrameCount();
 }
 
-bool JumpState::canRecordJump() {
+bool JumpState::canRecordJump() const {
     return currentState == State::ON_GROUND;
 }
 
-bool JumpState::isRecordingJump() {
+bool JumpState::isRecordingJump() const {
     return currentState == State::JUMP_RECORD;
 }
 

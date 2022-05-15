@@ -56,7 +56,7 @@ void PlayerJumpStateHandler::handleContinuingJumpRecord() {
     }
 }
 
-bool PlayerJumpStateHandler::shouldExitJumpRecord() {
+bool PlayerJumpStateHandler::shouldExitJumpRecord() const {
     // Return whether the current number of frames the player has been in
     // JUMP_RECORD is over the threshold
     int numberOfJumpRecordFrames = jumpState.getNumberOfJumpRecordFrames();
@@ -103,11 +103,11 @@ void PlayerJumpStateHandler::jumpButtonReleasedDuringRecord() {
     startJump();
 }
 
-bool PlayerJumpStateHandler::canRecordJump() {
+bool PlayerJumpStateHandler::canRecordJump() const {
     return jumpState.canRecordJump();
 }
 
-bool PlayerJumpStateHandler::isRecordingJump() {
+bool PlayerJumpStateHandler::isRecordingJump() const {
     return jumpState.isRecordingJump();
 }
 
