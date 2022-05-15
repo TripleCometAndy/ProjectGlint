@@ -1,9 +1,8 @@
 #include <iostream>
-#include <PlayerJumpScript.h>
+#include <PlayerJumpStateHandler.h>
 
 
-int main () {
-    std::cout << "BOP BOP BOP" << std::endl;
+int main () { 
+    pjump::PlayerJumpStateHandler jumpStateHandler;
 
-    pjump::handleStartJumpRecord();
 }
