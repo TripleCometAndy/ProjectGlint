@@ -3,7 +3,7 @@
 
 namespace pjump {
 PlayerJumpStateHandler::PlayerJumpStateHandler(std::function<void(int)> notify)
-    : notifyJumpBegin(notify) {
+    : notifyJumpBegin(std::move(notify)) {
 }
 
 void PlayerJumpStateHandler::jumpButtonPressed() {
@@ -89,6 +89,10 @@ void PlayerJumpStateHandler::iterateJumpingFrame() {
 }
 
 void PlayerJumpStateHandler::recordThatJumpBegan() {
+    if (!notifyJumpBegin) {
+        return;
+    }
+
     int numberOfJumpRecordFrames = jumpState.getNumberOfJumpRecordFrames();
 
     notifyJumpBegin(numberOfJumpRecordFrames);

@@ -25,6 +25,7 @@ class PlayerJumpStateHandler {
 
   public:
     PlayerJumpStateHandler(std::function<void(int)> notifyJumpBegin);
+    PlayerJumpStateHandler(nullptr_t) = delete;
 
     void jumpButtonPressed();
     void jumpButtonReleased();

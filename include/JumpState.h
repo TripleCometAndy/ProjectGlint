@@ -1,7 +1,5 @@
 #pragma once
 
-#include <functional>
-
 namespace pjump {
 class JumpState {
   private:

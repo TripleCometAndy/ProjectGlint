@@ -8,11 +8,7 @@ void beginJump(int numRecordedJumpFrames) {
 }
 
 int main() {
-    std::function<void(int)> func = [](int numRecordedJumpFrames) {
-        beginJump(numRecordedJumpFrames);
-    };
-
-    pjump::PlayerJumpStateHandler jumpStateHandler(std::move(func));
+    pjump::PlayerJumpStateHandler jumpStateHandler(&beginJump);
     jumpStateHandler.jumpButtonPressed();
     jumpStateHandler.jumpButtonPressed();
     jumpStateHandler.jumpButtonReleased();
