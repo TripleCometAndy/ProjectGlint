@@ -2,9 +2,8 @@
 #include <iostream>
 
 namespace pjump {
-PlayerJumpStateHandler::PlayerJumpStateHandler(
-    std::function<void(int)> notifyJumpBegin) {
-    this->notifyJumpBegin = notifyJumpBegin;
+PlayerJumpStateHandler::PlayerJumpStateHandler(std::function<void(int)> notify)
+    : notifyJumpBegin(notify) {
 }
 
 void PlayerJumpStateHandler::jumpButtonPressed() {

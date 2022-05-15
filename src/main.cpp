@@ -12,8 +12,7 @@ int main() {
         beginJump(numRecordedJumpFrames);
     };
 
-    pjump::PlayerJumpStateHandler jumpStateHandler(func);
-    jumpStateHandler.jumpButtonPressed();
+    pjump::PlayerJumpStateHandler jumpStateHandler(std::move(func));
     jumpStateHandler.jumpButtonPressed();
     jumpStateHandler.jumpButtonPressed();
     jumpStateHandler.jumpButtonReleased();
