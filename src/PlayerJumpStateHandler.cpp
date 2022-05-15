@@ -2,7 +2,25 @@
 #include <iostream>
 
 namespace pjump {
-PlayerJumpStateHandler::PlayerJumpStateHandler() { std::cout << "GOT HERE!"; }
+PlayerJumpStateHandler::PlayerJumpStateHandler(
+    std::function<void(int)> notifyJumpBegin) {
+    this->notifyJumpBegin = notifyJumpBegin;
+}
+
+void PlayerJumpStateHandler::jumpButtonPressed() {
+    if (canRecordJump()) {
+        handleStartJumpRecord();
+    }
+    else if (isRecordingJump()) {
+        handleContinuingJumpRecord();
+    }
+}
+
+void PlayerJumpStateHandler::jumpButtonReleased() {
+    if (isRecordingJump()) {
+        jumpButtonReleasedDuringRecord();
+    }
+}
 
 /*
 Given that the player presses the jump button
@@ -32,25 +50,24 @@ void PlayerJumpStateHandler::handleContinuingJumpRecord() {
 
     if (shouldExitJumpRecord) {
         startJump();
-    } else {
+    }
+    else {
         iterateJumpRecordFrame();
     }
 }
 
 bool PlayerJumpStateHandler::shouldExitJumpRecord() {
-    // TODO
     // Return whether the current number of frames the player has been in
     // JUMP_RECORD is over the threshold
-
     int numberOfJumpRecordFrames = jumpState.getNumberOfJumpRecordFrames();
 
     return numberOfJumpRecordFrames > JUMP_RECORD_THRESHOLD;
 }
 
 void PlayerJumpStateHandler::startJump() {
-    // TODO
     // Place a record somewhere that a jump should occur. Also hand the number
     // of frames the player was in JUMP_RECORD
+    recordThatJumpBegan();
 
     // Set the JumpState to JUMPING
     enterJumpingState();
@@ -71,4 +88,27 @@ void PlayerJumpStateHandler::enterJumpingState() {
 void PlayerJumpStateHandler::iterateJumpingFrame() {
     jumpState.iterateNumberOfFrames();
 }
+
+void PlayerJumpStateHandler::recordThatJumpBegan() {
+    int numberOfJumpRecordFrames = jumpState.getNumberOfJumpRecordFrames();
+
+    notifyJumpBegin(numberOfJumpRecordFrames);
 }
+
+/*
+ * Given the player releases the jump button
+ * And is in jump record
+ */
+void PlayerJumpStateHandler::jumpButtonReleasedDuringRecord() {
+    startJump();
+}
+
+bool PlayerJumpStateHandler::canRecordJump() {
+    return jumpState.canRecordJump();
+}
+
+bool PlayerJumpStateHandler::isRecordingJump() {
+    return jumpState.isRecordingJump();
+}
+
+} // namespace pjump

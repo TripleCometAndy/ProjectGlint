@@ -1,9 +1,17 @@
 #pragma once
 
+#include <functional>
+
 namespace pjump {
 class JumpState {
   private:
-    enum class State {JUMPING, JUMP_RECORD};
+    enum class State {JUMPING, JUMP_RECORD, ON_GROUND};
+    State currentState;
+    int numberOfFramesInCurrentState;
+
+    void setState(State state);
+    void resetFrameCount();
+
   public:
     JumpState();
 
@@ -11,5 +19,7 @@ class JumpState {
     int getNumberOfJumpRecordFrames();
     void iterateNumberOfFrames();
     void startJumping();
+    bool canRecordJump();
+    bool isRecordingJump();
 };
 }
